@@ -1,0 +1,15 @@
+[workspace]
+authors = ["Scott Henderson <3924836+scottyhq@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "precip-stac"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+create-stac="python multiband_precip_to_stac.py > rainfall_4km_"
+
+[dependencies]
+rio-stac = ">=0.12.0,<0.13"
+odc-stac = ">=0.5.2,<0.6"
+rioxarray = ">=0.22.0,<0.23"
+ipykernel = ">=7.2.0,<8"
