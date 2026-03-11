@@ -5,7 +5,7 @@ Band number maps to date: band 1 -> 2025-12-01, band 2 -> 2025-12-02, etc.
 Also stacks the per-day COGs back into a VRT (rainfall_4km_multiband.vrt).
 
 NOTE on positive NS resolution:
-  The source TIF uses a polar stereographic CRS whose geotransform has a
+  The source TIF uses a CRS whose geotransform has a
   positive Y resolution (+4762.5), meaning rows are ordered bottom-to-top.
   Both `gdal raster select` and `gdalbuildvrt` / `gdal raster stack` reject
   files with positive NS resolution. `gdalwarp` correctly handles this by
@@ -62,7 +62,7 @@ for band in range(1, NUM_BANDS + 1):
     outputs.append(output)
 
 print(f"Stacking {len(outputs)} files -> {VRT_OUTPUT}")
-# gdal raster stack does not support positive NS resolution (polar stereographic CRS)
+# gdal raster stack does not support positive NS resolution
 # subprocess.run(
 #     [
 #         "gdal", "raster", "stack",
